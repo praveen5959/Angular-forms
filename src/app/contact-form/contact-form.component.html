@@ -1,0 +1,170 @@
+<div *ngIf="!name; else forminfo" class="form">
+  <h3>Identity Details:</h3>
+  <hr />
+  <form [formGroup]="myForm" (ngSubmit)="addPost(myForm.value)">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Name of the Applicant"
+        formControlName="name"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Father's / Spouse Name"
+        formControlName="father"
+      />
+    </mat-form-field>
+    <br />
+    <section>
+      <label>Gender:</label>
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <br />
+    <section>
+      <label>Maritial Status:</label>
+      <mat-radio-group formControlName="maritial">
+        <mat-radio-button value="Single">Sinlge</mat-radio-button>
+        <mat-radio-button value="Married">Married</mat-radio-button>
+      </mat-radio-group>
+    </section>
+
+    <section>
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Date of Birth"
+          formControlName="dob"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Nationality"
+          formControlName="nationality"
+        />
+      </mat-form-field>
+    </section>
+    <section>
+      <label>Status:</label>
+      <mat-radio-group formControlName="status">
+        <mat-radio-button value="Resident Individual"
+          >Resident Individual</mat-radio-button
+        >
+        <mat-radio-button value="Non Resident">Non Resident</mat-radio-button>
+        <mat-radio-button value="Foreign National"
+          >Foreign National</mat-radio-button
+        >
+      </mat-radio-group>
+    </section>
+    <br />
+    <mat-form-field>
+      <input matInput placeholder="PAN" formControlName="pan" />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput placeholder="Aadhar" formControlName="aadhar" />
+    </mat-form-field>
+    <br />
+    <mat-form-field style="min-width: 300px;">
+      <input
+        matInput
+        placeholder="Specify the proof of Identity submitted"
+        formControlName="identity"
+      />
+    </mat-form-field>
+    <h3>Address Details:</h3>
+    <hr />
+    <label for="">Residence Address:</label><br />
+    <mat-form-field>
+      <input matInput placeholder="Address" formControlName="residence" />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput placeholder="City/Town/Village" formControlName="city" />
+    </mat-form-field>
+    <mat-form-field style="padding-left:10px">
+      <input matInput placeholder="Pincode" formControlName="pincode" />
+    </mat-form-field>
+    <mat-form-field style="padding-left:10px">
+      <input matInput placeholder="State" formControlName="state" />
+    </mat-form-field>
+    <mat-form-field style="padding-left:10px">
+      <input matInput placeholder="Country" formControlName="country" />
+    </mat-form-field>
+    <br />
+    <label for="">Contact Details:</label><br />
+    <mat-form-field>
+      <input matInput placeholder="Tel(Off.)" formControlName="telloff" />
+    </mat-form-field>
+
+    <mat-form-field style="padding-left:10px">
+      <input matInput placeholder="Tel (Res.)" formControlName="tellres" />
+    </mat-form-field>
+    <mat-form-field style="padding-left:10px">
+      <input matInput placeholder="Mobile" formControlName="mobile" />
+    </mat-form-field>
+    <mat-form-field style="padding-left:10px">
+      <input
+        type="email"
+        matInput
+        placeholder="Email-id"
+        formControlName="email"
+      />
+    </mat-form-field>
+
+    <br />
+    <mat-form-field style="min-width: 300px;">
+      <input
+        matInput
+        placeholder="Specify the proof of address submitted"
+        formControlName="proof_address"
+      />
+    </mat-form-field>
+    <br />
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="!myForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+<ng-template #forminfo>
+  <div class="form-container">
+    <div class="row columns">
+      <p>Name: {{ name }}</p>
+      <p>Father's Name:{{ father }}</p>
+      <p>Gender: {{ gender }}</p>
+      <p>Maritial Status: {{ maritial }}</p>
+      <p>DOB: {{ this.dob }}</p>
+      <p>Nationality: {{ nationality }}</p>
+      <p>Status: {{ status }}</p>
+      <p>PAN: {{ pan }}</p>
+      <p>Aadhar: {{ aadhar }}</p>
+      <p>Identity submitted: {{ identity }}</p>
+      <p>Residence Address: {{ residence }}</p>
+      <p>City: {{ city }}</p>
+      <p>Pincode: {{ pincode }}</p>
+      <p>State: {{ state }}</p>
+      <p>Country: {{ country }}</p>
+      <p>Tell. (Off.): {{ telloff }}</p>
+      <p>Tell. (Res.): {{ tellres }}</p>
+      <p>Mobile: {{ mobile }}</p>
+      <p>Email: {{ email }}</p>
+      <p>Proof of address submitted: {{ proof_address }}</p>
+    </div>
+  </div>
+</ng-template>
